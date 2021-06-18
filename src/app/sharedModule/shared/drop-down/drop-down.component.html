@@ -1,0 +1,6 @@
+    <label for="prodCategory">{{dataLabel}} {{dataValue}}
+        <small class="text-danger font-weight-bold">*</small></label>
+    <select name="prodCategory" id="prodCategory" class="form-control" formControlName="prodCategory" (change)="clickChild($event)">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let category of dataList" value="{{category?.name}}">{{category.name}}</option>
+    </select>
