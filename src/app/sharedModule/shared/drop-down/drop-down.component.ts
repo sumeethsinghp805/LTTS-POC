@@ -7,11 +7,11 @@ import { ApiServicesService } from '../../../commonServices/api-services.service
   selector: 'app-drop-down',
   templateUrl: './drop-down.component.html',
   styleUrls: ['./drop-down.component.scss'],
-  inputs:["datasource","dataLabel","dataValue"]
+  inputs:["dataSource","dataLabel","dataValue"]
 })
 export class DropDownComponent implements OnInit {
 
-  datasource:any;
+  dataSource:any;
   dataLabel:any;
   dataValue:any;
   dataList:any;
@@ -35,9 +35,5 @@ export class DropDownComponent implements OnInit {
     event.preventDefault();
     this.childClicked.emit(event.target.value);
   }
-
-
-
-
 
 }

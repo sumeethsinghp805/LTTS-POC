@@ -39,6 +39,10 @@ export class ApiServicesService {
     }).pipe(catchError(this.handleError))
   }
 
+  getDropDownConfig(){
+    return this.http.get(`${apiUrl}/shareConfig`).pipe(retry(1), catchError(this.handleError));
+  }
+
    // Error handling 
    handleError(error) {
     let errorMessage = '';

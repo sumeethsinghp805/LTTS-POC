@@ -108,6 +108,62 @@
       "name": "Other 2"
     }
   ],
+  "shareConfig": [
+    {
+      "componentId": 1,
+      "componentName": "dropDown1",
+      "key": "1",
+      "data": [
+        {
+          "id": 1,
+          "value": "value-1"
+        },
+        {
+          "id": 2,
+          "value": "value-2"
+        },
+        {
+          "id": 3,
+          "value": "value-3"
+        },
+        {
+          "id": 4,
+          "value": "value-4"
+        },
+        {
+          "id": 5,
+          "value": "value-5"
+        }
+      ]
+    },
+    {
+      "componentId": 2,
+      "componentName": "dropDown2",
+      "key": "2",
+      "data": [
+        {
+          "id": 1,
+          "value": "value-11"
+        },
+        {
+          "id": 2,
+          "value": "value-12"
+        },
+        {
+          "id": 3,
+          "value": "value-13"
+        },
+        {
+          "id": 4,
+          "value": "value-14"
+        },
+        {
+          "id": 5,
+          "value": "value-15"
+        }
+      ]
+    }
+  ],
   "productList": [
     {
       "prodName": "Tea",

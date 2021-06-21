@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 import { ApiServicesService } from '../commonServices/api-services.service';
 import { NumToWordPipe } from '../commonPipe/num-to-word.pipe';
+import { CacheDataServiceService } from '../commonServices/cache-data-service.service';
 
 @Component({
   selector: 'app-add-product',
@@ -18,10 +19,16 @@ export class AddProductComponent implements OnInit {
   dropDownLbl = "Product Category2";
   dropDownVal: string;
   valueEmittedChild: string = '';
+  configData: any;
 
-  constructor(private route: Router, private api: ApiServicesService, private fb: FormBuilder) { }
+  constructor(private route: Router, private api: ApiServicesService, private fb: FormBuilder, private cache: CacheDataServiceService) { }
 
   ngOnInit(): void {
+    this.configData = this.cache.getConfig();
+    if(this.configData === undefined){
+      this.route.navigateByUrl('/all-product');
+    }
+
     this.api.getProdCategory().subscribe(data => {
       this.categoryList = data;
       console.log(this.categoryList);
