@@ -1,0 +1,9 @@
+{
+    "country":"IND",
+    "title":"EMP Certificate",
+    "descr":"Please select any certificate to get email on login",
+    "letter":[{
+        "id": "IND007",
+        "label":"Standard"
+    }]
+}

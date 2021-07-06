@@ -1,0 +1,325 @@
+{
+ "appCommon":[
+     {
+        "id": 1,
+        "c_name":"navDropConfig",
+        "c_json":{
+            "datascience":[
+                {
+                    "id" : 1,
+                    "route":"datascience1",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "value":"Data Item 1",
+                    "class": "datascience1"
+                },
+                {
+                    "id" : 2,
+                    "route":"datascience2",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "value":"Data Item 2",
+                    "class": "datascience2"
+                },
+                {
+                    "id" : 3,
+                    "route":"datascience3",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "value":"Data Item 3",
+                    "class": "datascience3"
+                },
+                {
+                    "id" : 4,
+                    "route":"datascience4",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "value":"Data Item 4",
+                    "class": "datascience4"
+                }
+            ],
+            "hadoop": [],
+            "aws": [],
+            "devops": [],
+            "salesforce": [],
+            "selenium": [],
+            "java": [],
+            "spring": [],
+            "xml": [],
+            "android": [],
+            "iphone": [],
+            "iot": [{
+                "id" : 1,
+                "route":"iotchild",
+                "visibilityFor":"all",
+                "icon":"pie-chart-fill",
+                "value":"iotchild",
+                "class": "iotchild"
+            }],
+            "more":[]
+        }   
+     },
+
+     {
+        "id": 2,
+        "c_name":"appCommon",
+        "c_json":{
+            "facetsConfig":[
+                {
+                    "route":"datascience",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "id":"datascience",
+                    "isDropDown":true,
+                    "value":"Data Science",
+                    "class": "datascience"
+                },
+                {
+                    "route":"hadoop",
+                    "visibilityFor":"all",
+                    "icon":"shield-shaded",
+                    "id":"hadoop",
+                    "value":"Hadoop",
+                    "class": "hadoop"
+                },
+                {
+                    "route":"aws",
+                    "visibilityFor":"all",
+                    "icon":"cast",
+                    "id":"aws",
+                    "value":"AWS",
+                    "class": "aws"
+                },
+                {
+                    "route":"devops",
+                    "visibilityFor":"all",
+                    "icon":"calendar-minus",
+                    "id":"devops",
+                    "value":"Dev Ops",
+                    "class": "devops"
+                },
+                {
+                    "route":"salesforce",
+                    "visibilityFor":"all",
+                    "icon":"cloud-haze2-fill",
+                    "id":"salesforce",
+                    "value":"Sales Force",
+                    "class": "salesforce"
+                },
+                {
+                    "route":"selenium",
+                    "visibilityFor":"all",
+                    "icon":"bezier",
+                    "id":"selenium",
+                    "value":"Selenium",
+                    "class": "selenium"
+                },
+                {
+                    "route":"java",
+                    "visibilityFor":"all",
+                    "icon":"book-fill",
+                    "id":"java",
+                    "value":"Java",
+                    "class": "java"
+                },
+                {
+                    "route":"spring",
+                    "visibilityFor":"all",
+                    "icon":"cpu",
+                    "id":"spring",
+                    "value":"Spring",
+                    "class": "spring"
+                },
+                {
+                    "route":"xml",
+                    "visibilityFor":"all",
+                    "icon":"upc",
+                    "id":"xml",
+                    "value":"XML",
+                    "class": "xml"
+                },
+                {
+                    "route":"android",
+                    "visibilityFor":"all",
+                    "icon":"bootstrap",
+                    "id":"android",
+                    "value":"Android",
+                    "class": "android"
+                },
+                {
+                    "route":"iphone",
+                    "visibilityFor":"all",
+                    "icon":"app",
+                    "id":"iphone",
+                    "value":"Iphone",
+                    "class": "iphone"
+                },
+                {
+                    "route":"iot",
+                    "visibilityFor":"all",
+                    "icon":"wifi",
+                    "isDropDown":true,
+                    "id":"iot",
+                    "value":"IOT",
+                    "class": "iot"
+                },
+                {
+                    "route":"aot",
+                    "visibilityFor":"all",
+                    "icon":"wifi",
+                    "id":"aot",
+                    "value":"AOT",
+                    "class": "aot"
+                },
+                {
+                    "route":"aot1",
+                    "visibilityFor":"all",
+                    "icon":"wifi",
+                    "id":"aot1",
+                    "value":"AOT1",
+                    "class": "aot1"
+                },
+                {
+                    "route":"aot2",
+                    "visibilityFor":"all",
+                    "icon":"wifi",
+                    "id":"aot2",
+                    "value":"AOT2",
+                    "class": "aot2"
+                },
+                {
+                    "route":"android1",
+                    "visibilityFor":"all",
+                    "icon":"bootstrap",
+                    "id":"android1",
+                    "value":"Android 1",
+                    "class": "android1"
+                },
+                {
+                    "route":"android2",
+                    "visibilityFor":"all",
+                    "icon":"bootstrap",
+                    "id":"android2",
+                    "value":"Android 2",
+                    "class": "android2"
+                },
+                {
+                    "route":"android3",
+                    "visibilityFor":"all",
+                    "icon":"bootstrap",
+                    "id":"android3",
+                    "value":"Android 3",
+                    "class": "android3"
+                },
+                {
+                    "route":"android4",
+                    "visibilityFor":"all",
+                    "icon":"bootstrap",
+                    "id":"android4",
+                    "value":"Android 4",
+                    "class": "android4"
+                },
+                {
+                    "route":"more",
+                    "visibilityFor":"all",
+                    "icon":"pie-chart-fill",
+                    "id":"more",
+                    "isDropDown":true,
+                    "value":"More",
+                    "class": "more"
+                }
+            ],
+            "noResultMsg" : "Bad request!"
+        }   
+     }
+ ],
+ "smartbox":[
+     {
+         "id":1,
+         "c_name":"datascience",
+         "c_json":{ "sbType":"standard",
+            "dropdown1":"",
+            "dropdown2":"",
+            "dropdown3":"",
+            "type":"static",
+            "para2": {
+                "value":""
+            },
+            "para3": {
+                "value":""
+            },
+            "mediaType":{
+                "img": {
+                    "param":"",
+                    "value":"assets/smartbox/abc.png",
+                    "paramValue":""
+                }
+            },
+            "source": "genericApp",
+            "subHeader": {
+            },
+            "showMedia": {
+                "app": true,
+                "overlay": true
+            },
+            "subHeader3": {
+                "value":""
+            },
+            "subHeader2": {
+                "value":""
+            },
+            "para": {
+                "value":"Sumeeth SIngh"
+            },
+            "header": {
+                "value":"kt"
+            },
+            "class":"itemanifesto-smartbox"
+         }
+     },
+     {
+         "id": 2,
+        "c_name":"hadoop",
+        "c_json":{
+            "sbType":"standard",
+            "dropdown1":"",
+            "dropdown2":"",
+            "dropdown3":"",
+            "type":"static",
+            "para2": {
+                "value":""
+            },
+            "para3": {
+                "value":""
+            },
+            "mediaType":{
+                "img": {
+                    "param":"",
+                    "value":"assets/smartbox/abc.png",
+                    "paramValue":""
+                }
+            },
+            "source": "genericApp",
+            "subHeader": {
+            },
+            "showMedia": {
+                "app": true,
+                "overlay": true
+            },
+            "subHeader3": {
+                "value":""
+            },
+            "subHeader2": {
+                "value":""
+            },
+            "para": {
+                "value":""
+            },
+            "header": {
+                "value":""
+            },
+            "class":"itemanifesto-smartbox"
+        }
+     } 
+ ]
+}

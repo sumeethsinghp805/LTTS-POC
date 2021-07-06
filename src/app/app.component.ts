@@ -1,25 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { SettingsService } from '@app/shared/services/settings.service';
+import { AppRestApiService } from '@app/shared/services/app-rest-api.service';
 
-import {ApiServicesService} from './commonServices/api-services.service';
-import { CacheDataServiceService } from './commonServices/cache-data-service.service';
-
-import { RouterModule, Routes } from '@angular/router';
+declare var $: any;
+declare var _: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'FirstProductApp';
+  title = 'app';
+  public isAppConfigLoaded: boolean = false;
+  public svgIds: any;
+  public svgContent: any;
 
-  constructor(private api: ApiServicesService, private cache: CacheDataServiceService, private router: Router){}
+  constructor(private _appRestService: AppRestApiService, private elem: ElementRef) { }
 
-  ngOnInit(){
-    this.api.getDropDownConfig().subscribe(value => {
-      this.cache.setConfig(value);
-    })
+  private onloadAppConfig() {
+    let self = this;
+    this._appRestService.loadAppConfig().subscribe(
+      (resp:any) => {
+        SettingsService.setAppConfig(resp);
+        self.isAppConfigLoaded = true;
+      },
+      err => {
+        console.log(err);
+      });
+  }
+  private loadEmploymentCertificateConfig() {
+    this._appRestService.loadEmploymentCertificateConfig().subscribe((resp:any) => {
+      SettingsService.setEmploymentCertificate(resp.data);
+    });
   }
 
+  ngOnInit() {
+    let self = this;
+    let userData = sessionStorage.getItem('smartApp:currentUser');
+    if (!userData) {
+      this._appRestService.loadUserInfo().subscribe(
+        (resp:any) => {
+          SettingsService.setUserInfo(resp.data);
+          sessionStorage.setItem('smartApp:currentUser', JSON.stringify(resp.data));
+          self.onloadAppConfig();
+        },
+        err => {
+          console.log(err);
+        });
+    } else {
+      SettingsService.setUserInfo(JSON.parse(userData));
+      self.onloadAppConfig();
+    }
+  }
 }

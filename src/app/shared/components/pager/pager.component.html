@@ -1,0 +1,13 @@
+<div class="ng4-pagination" *ngIf="isPager && (dataList?.length > defaultPages)">
+	<div class="row">
+		<div class="col-md-12 col-xs-12" *ngIf="dataList?.length">
+			<ul class="pagination justify-content-center border-top pt-3 mt-3">
+				<li class="page-item"><a class="page-link first border-0"  [ngClass]="{'disable': (currentIndex == 1 || pageNumber == 0), 'enable' : currentIndex > 1}" (click)="prevPage()" href="javaScript:void(0)">Previous</a></li>
+				<li *ngFor="let page of pagesIndex" class="page-item" >
+					<a [ngClass]="{'active': (currentIndex == page)}" (click)="setPage(page)" href="javaScript:void(0)">{{page}}</a>
+				</li>
+				<li class="page-item"><a class="page-link last enable border-0" [ngClass]="{'disable': (currentIndex == pageNumber), 'enable' : (currentIndex != pageNumber)}" (click)="nextPage()" href="javaScript:void(0)">Next</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

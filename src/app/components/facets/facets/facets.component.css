@@ -1,0 +1,13 @@
+ul.navbar-nav {
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+
+ul.navbar-nav > li {
+  display: table-cell;
+}
+
+.dropdown-menu{
+  position: absolute !important;
+}

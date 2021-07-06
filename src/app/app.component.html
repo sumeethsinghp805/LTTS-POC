@@ -1,32 +1,3 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand font-weight-bold" href="#">Sample Product</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a [routerLink]="['/all-product']" class="nav-link" routerLinkActive="active">Products<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="['/add-product']" class="nav-link" routerLinkActive="active">New Product</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-<main class="bg-light py-3">
-  <div class="container">
+<div class="container-fluid" *ngIf="isAppConfigLoaded">
     <router-outlet></router-outlet>
-  </div>
-</main>
-<footer class="text-muted bg-white p-2 border-top">
-  <div class="container-fluid">
-    <p class="float-right m-0">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="m-0">Sample Product Footer</p>
-  </div>
-</footer>
+</div>

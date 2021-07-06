@@ -1,0 +1,5 @@
+<app-dropdown [datasource]="facetSource" [childDropdownList]="facetDropList" [sbConfig]="facetTemplateConfig"
+(onDropDownChange)="onChangeOfStandardTemplDropDown($event)"
+(onButtonClick)="onButtonClickOfStandardTemplate($event)" (onLinkClick)="onSmartboxLinksClick($event)"
+				#facetStandardComp></app-dropdown>
+        

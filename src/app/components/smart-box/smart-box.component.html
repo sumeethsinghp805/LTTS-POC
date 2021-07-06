@@ -1,0 +1,22 @@
+<div class="smart-box-cntr py-2" *ngIf="smartBoxResults && smartBoxResults.name && smartboxContents"
+	(click)="onClickSmartbox(smartBoxResults.name)">
+	<div>
+		<div class="notification-contr"
+			*ngIf="smartboxActionContents && smartboxActionContents.notification && smartboxActionContents.notification.msg">
+			<div class="alert alert-{{smartboxActionContents.notification.alertType}} rounded-0 mb-0 clearfix"
+				role="alert">
+				<a class="close" data-dismiss="alert" href="javascript:void(0);" (click)="onCloseNotification()">×</a>
+				<span class="alert-icon"></span>
+				<span>{{smartboxActionContents.notification.msg}}</span>
+			</div>
+		</div>
+
+		<!--TODO: revisit smartboxContent.Standard condition-->
+		<div
+			*ngIf="(smartboxTemplateConfig && smartboxTemplateConfig.sbType==='standard') || (smartboxTemplateConfig.sbType==='chart' && !smartboxContents.chartOptions)">
+			<sb-standard-template [datasource]="smartboxContents" [sbConfig]="smartboxTemplateConfig"
+				(onDropDownChange)="onChangeOfStandardTemplDropDown($event)"
+				(onButtonClick)="onButtonClickOfStandardTemplate($event)" (onLinkClick)="onSmartboxLinksClick($event)"
+				#smartBoxStandardComp></sb-standard-template>
+		</div>
+</div>

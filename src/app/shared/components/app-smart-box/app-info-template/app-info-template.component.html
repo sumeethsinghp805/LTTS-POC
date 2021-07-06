@@ -1,0 +1,191 @@
+<div class="ng4-default-smartbox overlay-smartbox {{datasource.class}} {{datasource.sbName}}">
+	<div class="card rounded-0">
+		<div class="card-body row no-gutters flex-sm-column flex-md-row p-0">
+			<div class="standard-smartbox col-sm-12 col-xs-12 order-md-1 order-sm-2 order-xs-2 px-4 pt-3 pb-3 {{datasource.cntrClas}}"
+				[ngClass]="datasource.showMedia ? 'col-md-6' : 'col-md-12' ">
+				<div class="d-flex d-xs-block">
+					<h1 class="card-title {{datasource.headerClass}}" *ngIf="datasource.header"
+						[innerHTML]="datasource.header">
+					</h1>
+					<div class="row" *ngIf="datasource.dropdown1 || datasource.dropdown2">
+						<div *ngIf="datasource.dropdown1" class="dropdown vzbs-dropdown position-static">
+							<input type="hidden" id="" name="">
+							<button class="btn font-bold bg-white p-0 border-0" type="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="true">
+								<span>{{dropDown1Val}}</span>
+								<span class="fa fa-angle-down text-big top-5 position-relative pl-2"></span>
+							</button>
+							<ul class="list-group font-bold dropdown-menu border-0 rounded-0"
+								aria-labelledby="dropdownMenu1">
+								<li *ngFor="let item of datasource.dropdown1" (click)="onSelectDropDown1(item.label)"
+									class="list-group-item">
+									<span>{{item.label}}</span>
+								</li>
+							</ul>
+						</div>
+						<div *ngIf="datasource.dropdown2" class="dropdown vzbs-dropdown position-static">
+							<input type="hidden" id="" name="">
+							<button class="btn font-bold bg-white p-0 border-0" type="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="true">
+								<span>{{dropDown2Val}}</span>
+								<span class="fa fa-angle-down text-big top-5 position-relative pl-2"></span>
+							</button>
+							<ul class="list-group font-bold dropdown-menu border-0 rounded-0"
+								aria-labelledby="dropdownMenu1">
+								<li *ngFor="let item of datasource.dropdown2" (click)="onSelectDropDown2(item.label)"
+									class="list-group-item">
+									<span>{{item.label}}</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="content-inner">
+					<div *ngIf="datasource.headerContent">
+						<p class="color-black {{datasource.headerContent.paraClass}}"
+							*ngIf="datasource.headerContent.para" [innerHTML]="datasource.headerContent.para"></p>
+						<ul *ngIf="datasource.headerContent.list"
+							class="list-group p-0 pl-4 {{datasource.headerContent.listClass}}">
+							<li *ngFor="let item of datasource.headerContent.list; let i = index;"
+								class="color-black border-0 py-1 px-0">
+								<a *ngIf="datasource.headerContent.listType === 'link'" [href]="item.value"
+									target="_blank" class="color-black"
+									(click)="onSmartboxLinkClicks($event, item.value, item.label, 'header')">
+									{{item.label | cut:true:100:' ...' }}</a>
+								<span
+									*ngIf="datasource.headerContent.listType != 'link'">{{item.label | cut:true:100:' ...'}}</span>
+							</li>
+						</ul>
+						<p class="color-black {{datasource.headerContent.para2Class}}"
+							*ngIf="datasource.headerContent.para2" [innerHTML]="datasource.headerContent.para2"></p>
+					</div>
+					<div class="card-link" *ngIf="datasource.viewAllOptionHeader?.value">
+						<a [href]="datasource.viewAllOptionHeader.value" target="_blank"
+							class="color-black text-underline"
+							(click)="onSmartboxLinkClicks($event, datasource.viewAllOptionHeader.value, datasource.header, 'header')">
+							{{datasource.viewAllOptionHeader.label}} </a>
+					</div>
+					<h2 class=" pb-1"
+						*ngIf="datasource.subHeader && (datasource.list && datasource.list.length || datasource.para)">
+						{{datasource.subHeader}}</h2>
+
+					<p class="color-black" *ngIf="datasource.para" [innerHTML]="datasource.para"></p>
+					<ul *ngIf="datasource.list" class="list-group p-0  pl-4 smartbox-content-links">
+						<li *ngFor="let item of datasource.list; let i = index;" class="color-black border-0 py-1 px-0">
+							<a *ngIf="datasource.listType === 'link'" [href]="item.value" target="_blank"
+								class="color-black text-underline"
+								(click)="onSmartboxLinkClicks($event, item.value, item.label, 'subHeader')">
+								{{item.label | cut:true:100:' ...' }}</a>
+							<span
+								*ngIf="datasource.listType != 'link' && datasource.listType != 'checkbox'">{{item.label | cut:true:100:' ...'}}</span>
+							<div class="form-check"
+								*ngIf="datasource.listType === 'checkbox' && datasource.list.length > 1">
+								<label class="form-check-label" for="defaultCheck1">
+									{{item.label}}
+									<input class="form-check-input" type="checkbox" value="{{item.value}}"
+										id="defaultCheck1" (change)="onSelectCheckboxListOptions($event, item)">
+									<span class=" checkmark"> &nbsp;</span>
+								</label>
+							</div>
+						</li>
+					</ul>
+					<h2 class="pb-1 pt-1"
+						*ngIf="datasource.subHeader2 && (datasource.list2 && datasource.list2.length || datasource.para2)">
+						{{datasource.subHeader2}}</h2>
+					<p class="color-black" *ngIf="datasource.para2" [innerHTML]="datasource.para2"></p>
+					<ul *ngIf="datasource.list2" class="list-group p-0  pl-4 smartbox-content-links">
+						<li *ngFor="let item of datasource.list2; let i = index;"
+							class="color-black border-0 py-1 px-0">
+							<a *ngIf="datasource.listType === 'link'" [href]="item.value" target="_blank"
+								class="color-black text-underline"
+								(click)="onSmartboxLinkClicks($event, item.value, item.label, 'subHeader')">
+								{{item.label | cut:true:100:' ...' }}</a>
+							<span
+								*ngIf="datasource.listType != 'link' && datasource.listType != 'checkbox'">{{item.label | cut:true:100:' ...'}}</span>
+							<div class="form-check"
+								*ngIf="datasource.listType === 'checkbox' && datasource.list2.length > 1">
+								<label class="form-check-label" for="defaultCheck1">
+									{{item.label}}
+									<input class="form-check-input" type="checkbox" value="{{item.value}}"
+										id="defaultCheck1" (change)="onSelectCheckboxListOptions($event, item)">
+									<span class=" checkmark"> &nbsp;</span>
+								</label>
+							</div>
+						</li>
+					</ul>
+					<h2 class="pb-1 pt-1"
+						*ngIf="datasource.subHeader3 && (datasource.list3 && datasource.list3.length || datasource.para3)">
+						{{datasource.subHeader3}}</h2>
+					<p class="color-black" *ngIf="datasource.para3" [innerHTML]="datasource.para3"></p>
+					<ul *ngIf="datasource.list3" class="list-group p-0  pl-4 smartbox-content-links">
+						<li *ngFor="let item of datasource.list3; let i = index;"
+							class="color-black border-0 py-1 px-0">
+							<a *ngIf="datasource.listType === 'link'" [href]="item.value" target="_blank"
+								class="color-black text-underline"
+								(click)="onSmartboxLinkClicks($event, item.value, item.label, 'subHeader')">
+								{{item.label | cut:true:100:' ...' }}</a>
+							<span
+								*ngIf="datasource.listType != 'link' && datasource.listType != 'checkbox'">{{item.label | cut:true:100:' ...'}}</span>
+							<div class="form-check"
+								*ngIf="datasource.listType === 'checkbox' && datasource.list3.length > 1">
+								<label class="form-check-label" for="defaultCheck1">
+									{{item.label}}
+									<input class="form-check-input" type="checkbox" value="{{item.value}}"
+										id="defaultCheck1" (change)="onSelectCheckboxListOptions($event, item)">
+									<span class=" checkmark"> &nbsp;</span>
+								</label>
+							</div>
+						</li>
+					</ul>
+					<div class="card-link" *ngIf="datasource.viewAllOption?.value">
+						<a [href]="datasource.viewAllOption.value" target="_blank" class="color-black text-underline"
+							(click)="onSmartboxLinkClicks($event, datasource.viewAllOption.value, datasource.viewAllOption.label, 'subHeader')">
+							{{datasource.viewAllOption.label}} </a>
+					</div>
+
+					<div class="card-bottom pt-2" *ngIf="datasource.catalogOptions && datasource.catalogOptions.length">
+						<ul class="list-group d-flex d-xs-block flex-row">
+							<li *ngFor="let catalog of datasource.catalogOptions"
+								class="list-group-item border-0 pl-0 mb-0">
+								<a *ngIf="catalog.url" [href]="catalog.url" target="_blank"
+									class="color-black {{catalog.type != 'link' ? 'font-medium' : 'text-underline'}}">
+									<span [class]="catalog.icon"></span>{{catalog.value}}
+								</a>
+								<a *ngIf="catalog.specification==='mailto'" href="javascript:void(0)"
+									class="color-black font-medium"
+									(click)="onSendEmail(emailAddress, catalog.emailSub, catalog.emailBody)">
+									<span [class]="catalog.icon"></span>{{catalog.value}}
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div [class]="datasource.actionClass"
+						*ngIf="datasource.action && datasource.action.component==='button'">
+						<button class="btn-standard pull-left mr-4" 
+							(click)="onAction(datasource.action, 'button')">{{datasource.action.title}}</button>
+						<a class="color-white text-underline pull-left h5 mt-2 link-target-dashboard"
+							href="javascript:void(0);" *ngIf="datasource.action.link.enabled" 
+							(click)="onAction(datasource.action, 'link')">{{datasource.action.link.title}}</a>
+					</div>
+				</div>
+				<div *ngIf="datasource.footer" [innerHTML]="datasource.footer"
+					class="footer border-top border-dark pt-2 color-black font-medium text-medium {{datasource.footerClass}}">
+				</div>
+			</div>
+			<div *ngIf="datasource.showMedia && datasource.mediaType==='img'"
+				class="col-md-6 col-sm-12 col-xs-12 order-md-1 order-sm-1 order-xs-1 bg-black">
+				<div class="embed-responsive text-center">
+					<img class="m-img-fluid" [src]="datasource.imgUrl" alt="Jabber">
+				</div>
+			</div>
+			<div *ngIf="datasource.showMedia && datasource.mediaType==='video'"
+				class="col-md-6 col-sm-12 col-xs-12 order-md-1 order-sm-1 order-xs-1 bg-black">
+				<div class="embed-responsive text-center video-contr m-h-200">
+					<iframe *ngIf="datasource.videoUrl" class="" [src]="datasource.safeUrl" scrolling="no"
+						allowfullscreen="true" frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
