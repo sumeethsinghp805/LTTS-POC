@@ -43,74 +43,9 @@ export class FacetsComponent implements OnInit {
 
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private ngZone: NgZone,
-    private sanitizer: DomSanitizer,
-    private observerService: AppObserverService,
-    private elem: ElementRef,
-    private renderer:Renderer2,
-  ) {
-  }
+    private observerService: AppObserverService,) { }
 
-
-  private onSelectFacet(facet: string, pos: string) {
-    this.sourceFacet = facet;
-    this.canShowMoreList = false;
-    this.rearrageFacetPosition(facet, pos);
-    this.router.navigate(['/' + facet]);
-    this.observerService.updateSourceFacet(facet);
-  }
-
-  private onMoreFacet() {
-    console.log(this.canShowMoreList);
-    this.canShowMoreList = !this.canShowMoreList;
-  }
-
-  private rearrageFacetPosition(facet: string, pos: string) {
-    if (pos === 'more') {
-      let selectedActiveFacet = _.find(this.moreFacetsList, { id: facet });
-      let selectedActiveFacetIndex = _.indexOf(this.moreFacetsList, selectedActiveFacet);
-      let replacedFacet = this.updatedFacets[this.updatedFacets.length - 1];
-      this.updatedFacets[this.updatedFacets.length - 1] = selectedActiveFacet;
-      this.moreFacetsList[selectedActiveFacetIndex] = replacedFacet;
-    }
-  }
-
-
-
-  private configureFacetResize(width) {
-    
-  }
-
-
-//   getOrientation() {
-//     if (window.outerWidth > window.outerHeight) {
-//       return 'landscape';
-//     return 'portrait';
-//   }
-// }
-
-  private updateFacetsDisplayPrequisite(facets) {
-    let updatedFacets = <any>[];
-    let self = this;
-    _.each(facets, function (facet) {
-      if (facet.visibilityFor === 'all' || facet.visibilityFor === self.userInfo.userDiversion) {
-        updatedFacets.push(facet);
-      }
-    });
-    this.facetsList = updatedFacets;
-    this.updatedFacets = updatedFacets;
-  }
-
-  private updateNavDrpList(facetsDropItem){
-
-  }
-
-  // ngAfterViewInit()
-  // {
-  //   //setTimeout(()=>this.getScreenSize(),100)
-  // }
   ngOnInit() {
     let self = this;
     this.appConfig = SettingsService.getAppConfig();
@@ -119,30 +54,18 @@ export class FacetsComponent implements OnInit {
     this.facetDropList = this.appConfig['navDropConfig'];
     console.log(this.facetDropList)
     this.userInfo = SettingsService.getUserInfo();
-    this.updateFacetsDisplayPrequisite(this.facetsList);
     this.sourceFacet = this.router.url.split(";")[0].split("/")[2];
     if (!this.sourceFacet) {
       this.router.navigate(['/'+this.facetsList[0].route])
       this.sourceFacet = this.facetsList[0].route;
     }
-
-    
-    //Triggeres on refresh of browser in order to retain the current page
-    window.onbeforeunload = function () {
-      console.log(self.appTxt);
-      self.router.navigate(['/'+ self.sourceFacet]);
-    };
-
-    this.observerService.currentSourceFacet.subscribe(facet => {
-      if (!facet || facet === this.sourceFacet) { return; }
-      this.sourceFacet = facet;
-    });
-
-    this.appTxtChangeSubscription = this.observerService.currentAppRoute.subscribe(appText => {
-      this.appTxt = appText;
-    });
   }
 
+  //callback for standard template dropdown change
+  public onChangeOfStandardTemplDropDown(data) {
+    console.log(data);
+    this.router.navigate(['/'+data.dropDownVal]);
+  }
   ngOnDestroy() {
     this.appTxtChangeSubscription.unsubscribe();
   }

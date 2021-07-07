@@ -1,10 +1,13 @@
-<div class="row btn-group generic-drop">
-      <div *ngFor="let facet of dropDownList" class="generic-list" [ngClass]="facet.isDropDown ? 'dropdown' : ''" >
-        <button #genericList type="button" id="{{facet.id}}" class="btn btn-danger" [ngClass]="facet.isDropDown ? 'dropdown-toggle' : ''" data-toggle="dropdown" aria-haspopup="{{facet.isDropDown ? true : false}}" aria-expanded="false">
-          <span class="bi bi-{{facet.icon}}"></span> {{ facet.value }}
-        </button>
-        <div *ngIf="facet.isDropDown && dropList[facet.id].length > 0" class="dropdown-menu">
-          <a *ngFor="let item of dropList[facet.id]" (click)="onSelectDropDown(item.value)" class="dropdown-item">{{item.value}}</a>
-        </div>    
+<nav>
+  <div class="row btn-group generic-drop">
+    <div *ngFor="let facet of dropDownList" class="generic-list" [ngClass]="facet.isDropDown ? 'dropdown' : ''" >
+      <button #genericList (click)="facet.isDropDown?'':onSelectDropDown(facet.id)" type="button" id="{{facet.id}}" 
+      class="btn btn-basic" [ngClass]="facet.isDropDown ? 'dropdown-toggle' : ''" data-toggle="dropdown" aria-haspopup="{{facet.isDropDown ? true : false}}" aria-expanded="false">
+        <span class="bi bi-{{facet.icon}}"></span> {{ facet.value }}
+      </button>
+      <div *ngIf="facet.isDropDown && dropList[facet.id].length > 0" class="dropdown-menu">
+        <a (click)="onSelectDropDown(item.id)" *ngFor="let item of dropList[facet.id]" (click)="onSelectDropDown(item.value)" class="dropdown-item">{{item.value}}</a>
+      </div>    
     </div> 
-</div>
+  </div>
+</nav>

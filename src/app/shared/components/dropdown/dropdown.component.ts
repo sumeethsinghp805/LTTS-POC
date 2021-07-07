@@ -35,6 +35,7 @@ export class DropdownComponent implements OnInit {
 
   @Output()
   onDropDownChange: EventEmitter<any> = new EventEmitter<any>();
+  
   @Output()
   onLinkClick: EventEmitter<any> = new EventEmitter<any>();
 
